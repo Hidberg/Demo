@@ -1,0 +1,12 @@
+[![SauceDemo Tests](https://github.com/Hidberg/Demo/actions/workflows/playwright.yml/badge.svg)](https://github.com/Hidberg/Demo/actions/workflows/playwright.yml)
+
+## Description
+Autotests implementation
+- **UI**: [SauceDemo](https://www.saucedemo.com)
+- **API**: [Reqres.in](https://reqres.in)
+
+## Run tests
+```bash
+npm install
+npx playwright install
+npm test
