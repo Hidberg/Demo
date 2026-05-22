@@ -6,7 +6,7 @@ test.describe('UI Tests - SauceDemo', () => {
 
     test('@UI Login with standard_user - redirect to inventory', async ({ loginPage, inventoryPage }) => {
         await loginPage.goto();
-        await loginPage.login(config.ui.users.standard, config.ui.password);
+        await loginPage.login(config.ui.users.standard, '123');
         await expect(inventoryPage.inventoryItems).toHaveCount(6);
     });
 
