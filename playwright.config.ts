@@ -17,8 +17,11 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ['html', { outputFolder: 'playwright-report' }],
-    ['allure-playwright'],
     ['json', { outputFile: 'test-results.json' }],
+    ['allure-playwright', {
+      outputFolder: 'allure-results',
+      detail: true,
+    }],
   ],
   use: {
     baseURL: process.env.BASE_URL_UI,
@@ -27,6 +30,8 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'retain-on-failure',
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
   },
 
   /* Configure projects for major browsers */

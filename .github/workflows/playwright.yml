@@ -32,23 +32,22 @@ jobs:
           API_EMAIL: ${{ secrets.API_EMAIL }}
           API_PASSWORD: ${{ secrets.API_PASSWORD }}
           API_X_KEY: ${{ secrets.API_X_KEY }}
+
     - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
+      if: always()
       with:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
 
-    - name: Upload screenshots on failure
-      if: failure()
-      uses: actions/upload-artifact@v4
+    - uses: simple-elf/allure-report-action@v1
+      if: always()
       with:
-        name: screenshots
-        path: test-results/**/*.png
+        allure_results: allure-results
+        allure_report: allure-report
 
-    - name: Upload videos on failure
-      if: failure()
-      uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v4
+      if: always()
       with:
-        name: videos
-        path: test-results/**/*.webm
+        name: allure-report
+        path: allure-report/
