@@ -2,6 +2,7 @@
 # Playwright
 node_modules/
 allure-results/
+allure-report/
 .env
 /test-results/
 test-results.json
