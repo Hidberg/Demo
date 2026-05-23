@@ -5,6 +5,9 @@ Autotests implementation
 - **UI**: [SauceDemo](https://www.saucedemo.com)
 - **API**: [Reqres.in](https://reqres.in)
 
+## Requirements
+- **Node.js** version 18+
+
 ## Run tests
 ```bash
 npm install
