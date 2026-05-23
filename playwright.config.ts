@@ -24,21 +24,31 @@ export default defineConfig({
     }],
   ],
   use: {
-    baseURL: process.env.BASE_URL_UI,
-    // screenshot: 'only-on-failure',
-    // video: 'retain-on-failure',
-
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'retain-on-failure',
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'ui',
+      testMatch: '**/ui/**/*.spec.ts',
+      use: {
+        ...devices['Desktop Chrome'],
+        baseURL: process.env.BASE_URL_UI,
+        screenshot: 'only-on-failure',
+        video: 'retain-on-failure',
+      },
+    },
+    {
+      name: 'api',
+      testMatch: '**/api/**/*.spec.ts',
+      use: {
+        baseURL: process.env.API_BASE_URL,
+        extraHTTPHeaders: {
+          'x-api-key': process.env.API_X_KEY || '',
+        },
+      },
     },
   ],
 });

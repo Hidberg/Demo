@@ -5,15 +5,8 @@ import { config } from '../config/env';
 export const test = base.extend<{
     reqresClient: ReqresClient;
 }>({
-    reqresClient: async ({ playwright }, use) => {
-        const apiContext = await playwright.request.newContext({
-            baseURL: config.api.baseURL,
-            extraHTTPHeaders: {
-                'x-api-key': config.api.xApiKey,
-            },
-        });
-        const client = new ReqresClient(apiContext);
+    reqresClient: async ({ request }, use) => {
+        const client = new ReqresClient(request);
         await use(client);
-        apiContext.dispose();
     },
 });

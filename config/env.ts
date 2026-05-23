@@ -8,7 +8,6 @@ function getEnvVar(key: string): string {
 
 export const config = {
     ui: {
-        baseURL: getEnvVar('BASE_URL_UI'),
         users: {
             standard: getEnvVar('LOGIN_STANDARD'),
             locked: getEnvVar('LOGIN_LOCKED'),
@@ -18,7 +17,6 @@ export const config = {
         password: getEnvVar('PASSWORD'),
     },
     api: {
-        baseURL: getEnvVar('API_BASE_URL'),
         email: getEnvVar('API_EMAIL'),
         password: getEnvVar('API_PASSWORD'),
         xApiKey: getEnvVar('API_X_KEY')
