@@ -13,3 +13,8 @@ Autotests implementation
 npm install
 npx playwright install
 npm test
+
+## How to open reports
+- Locally you can open index.html from playwright-report directory
+- If you want to open Allure report from CI, you can download artifact,
+then run ```npx allure open "path to the directory allure-report"```
