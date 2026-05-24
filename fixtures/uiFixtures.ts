@@ -4,7 +4,7 @@ import { SideMenuPage } from '../pages/SideMenuPage';
 import { InventoryPage } from '../pages/InventoryPage';
 import { CartPage } from '../pages/CartPage';
 import { CheckoutPage } from '../pages/CheckoutPage';
-import { config } from '../config/env';
+import { uiUsersConfig } from '../config/env';
 
 export const test = base.extend<{
     loginPage: LoginPage;
@@ -12,9 +12,8 @@ export const test = base.extend<{
     inventoryPage: InventoryPage;
     cartPage: CartPage;
     checkoutPage: CheckoutPage;
-    standardUser: LoginPage;
+    loginByStandardUser: LoginPage;
 }>({
-    // Инициализация Page Objects
     loginPage: async ({ page }, use) => {
         const loginPage = new LoginPage(page);
         await use(loginPage);
@@ -40,9 +39,9 @@ export const test = base.extend<{
         await use(checkoutPage);
     },
 
-    standardUser: async ({ page, loginPage }, use) => {
+    loginByStandardUser: async ({ loginPage }, use) => {
         await loginPage.goto();
-        await loginPage.login(config.ui.users.standard, config.ui.password);
+        await loginPage.login(uiUsersConfig.standard.login, uiUsersConfig.standard.password);
         await use(loginPage);
     },
 });
