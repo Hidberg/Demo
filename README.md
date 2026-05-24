@@ -13,6 +13,7 @@ Autotests implementation
 npm install
 npx playwright install
 npm test
+```
 
 ## How to open reports
 - Locally you can open index.html from playwright-report directory
