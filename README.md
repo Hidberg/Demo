@@ -1,4 +1,4 @@
-[![SauceDemo Tests](https://github.com/Hidberg/Demo/actions/workflows/playwright.yml/badge.svg?branch=main)](https://github.com/Hidberg/Demo/actions/workflows/playwright.yml)
+[![SauceDemo & Reqres Tests](https://github.com/Hidberg/Demo/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/Hidberg/Demo/actions/workflows/tests.yml)
 
 ## Description
 Autotests implementation
