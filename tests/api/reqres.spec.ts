@@ -56,7 +56,7 @@ test.describe('API Tests - SauceDemo', () => {
     });
 
     test('@API Login without password - 400 + error field', async ({ reqresClient }) => {
-        const response = await reqresClient.login(apiConfig.email);
+        const response = await reqresClient.login(apiConfig.email, null);
         expect(response.status()).toBe(400);
         const body = await response.json();
         expect(body).toHaveProperty('error');
