@@ -1,11 +1,11 @@
 import { expect } from '@playwright/test';
 import { test } from '../../fixtures/apiFixtures';
-import { config } from '../../config/env';
+import { apiConfig } from '../../config/env';
 
 test.describe('API Tests - SauceDemo', () => {
 
     test('@API GET users page 2 - status 200 + schema validation', async ({ reqresClient }) => {
-        const response = await reqresClient.getUsers(2);
+        const response = await reqresClient.getUsersPage(2);
         expect(response.status()).toBe(200);
         const body = await response.json();
         expect(body).toHaveProperty('page', 2);
@@ -48,7 +48,7 @@ test.describe('API Tests - SauceDemo', () => {
     });
 
     test('@API Login success - 200 + token', async ({ reqresClient }) => {
-        const response = await reqresClient.login(config.api.email, config.api.password);
+        const response = await reqresClient.login(apiConfig.email, apiConfig.password);
         expect(response.status()).toBe(200);
         const body = await response.json();
         expect(body).toHaveProperty('token');
@@ -56,7 +56,7 @@ test.describe('API Tests - SauceDemo', () => {
     });
 
     test('@API Login without password - 400 + error field', async ({ reqresClient }) => {
-        const response = await reqresClient.login(config.api.email);
+        const response = await reqresClient.login(apiConfig.email);
         expect(response.status()).toBe(400);
         const body = await response.json();
         expect(body).toHaveProperty('error');

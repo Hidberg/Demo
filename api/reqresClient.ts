@@ -3,7 +3,7 @@ import { APIRequestContext } from '@playwright/test';
 export class ReqresClient {
     constructor(private request: APIRequestContext) { }
 
-    async getUsers(page: number = 2) {
+    async getUsersPage(page: number = 2) {
         return await this.request.get(`users?page=${page}`);
     }
 

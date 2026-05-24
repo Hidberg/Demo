@@ -1,6 +1,5 @@
 import { test as base } from '@playwright/test';
 import { ReqresClient } from '../api/reqresClient';
-import { config } from '../config/env';
 
 export const test = base.extend<{
     reqresClient: ReqresClient;

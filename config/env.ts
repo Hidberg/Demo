@@ -6,19 +6,19 @@ function getEnvVar(key: string): string {
     return value;
 }
 
-export const config = {
-    ui: {
-        users: {
-            standard: getEnvVar('LOGIN_STANDARD'),
-            locked: getEnvVar('LOGIN_LOCKED'),
-            problem: getEnvVar('LOGIN_PROBLEM'),
-            performance: getEnvVar('LOGIN_PERFORMANCE'),
-        },
+export const uiUsersConfig = {
+    standard: {
+        login: getEnvVar('LOGIN_STANDARD'),
         password: getEnvVar('PASSWORD'),
     },
-    api: {
-        email: getEnvVar('API_EMAIL'),
-        password: getEnvVar('API_PASSWORD'),
-        xApiKey: getEnvVar('API_X_KEY')
-    },
-};
+    locked: {
+        login: getEnvVar('LOGIN_LOCKED'),
+        password: getEnvVar('PASSWORD'),
+    }
+}
+
+export const apiConfig = {
+    email: getEnvVar('API_EMAIL'),
+    password: getEnvVar('API_PASSWORD'),
+    xApiKey: getEnvVar('API_X_KEY')
+}
