@@ -3,7 +3,7 @@ import { APIRequestContext } from '@playwright/test';
 export class ReqresClient {
     constructor(private request: APIRequestContext) { }
 
-    async getUsersPage(page: number = 2) {
+    async getUsersPage(page: number) {
         return await this.request.get(`users?page=${page}`);
     }
 
@@ -23,8 +23,8 @@ export class ReqresClient {
         return await this.request.delete(`users/${id}`);
     }
 
-    async login(email: string, password: string | null = null) {
-        const data = password ? { email, password } : { email };
+    async login(email: string, password: string | null) {
+        const data = { email, password };
         return await this.request.post(`login`, { data });
     }
 }

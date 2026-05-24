@@ -1,10 +1,9 @@
-import { test as base, Page } from '@playwright/test';
+import { test as base } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { SideMenuPage } from '../pages/SideMenuPage';
 import { InventoryPage } from '../pages/InventoryPage';
 import { CartPage } from '../pages/CartPage';
 import { CheckoutPage } from '../pages/CheckoutPage';
-import { uiUsersConfig } from '../config/env';
 
 export const test = base.extend<{
     loginPage: LoginPage;
@@ -12,7 +11,6 @@ export const test = base.extend<{
     inventoryPage: InventoryPage;
     cartPage: CartPage;
     checkoutPage: CheckoutPage;
-    loginByStandardUser: LoginPage;
 }>({
     loginPage: async ({ page }, use) => {
         const loginPage = new LoginPage(page);
@@ -39,9 +37,4 @@ export const test = base.extend<{
         await use(checkoutPage);
     },
 
-    loginByStandardUser: async ({ loginPage }, use) => {
-        await loginPage.goto();
-        await loginPage.login(uiUsersConfig.standard.login, uiUsersConfig.standard.password);
-        await use(loginPage);
-    },
 });
